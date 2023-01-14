@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  rabbitmq:
+    addresses: amqp://rabbit:5674,amqp://rabbit:5672
+    username: guest
+    password: guest
+    virtual-host: malima
+  datasource:
+    url: jdbc:mysql://mysql_university:3306/university_db?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
