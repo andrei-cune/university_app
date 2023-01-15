@@ -1,10 +1,8 @@
 package com.idp.cinema.configuration.kafka;
 
 
-import com.idp.cinema.model.Application;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -18,10 +16,10 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-    private static final String bootstrapAddress = "127.0.0.1:29092";
+    private static final String bootstrapAddress = "kafka1:9092";
 
     @Bean
-    public ProducerFactory<String, Application> producerFactory() {
+    public ProducerFactory<String, Object> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -36,7 +34,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Application> kafkaTemplate() {
+    public KafkaTemplate<String, Object> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 
