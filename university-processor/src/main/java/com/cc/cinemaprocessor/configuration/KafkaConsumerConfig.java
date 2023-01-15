@@ -5,6 +5,7 @@ import com.cc.cinemaprocessor.model.Application;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -40,8 +41,11 @@ public class KafkaConsumerConfig {
         props.put(
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
                 JsonDeserializer.class);
+        props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
         return new DefaultKafkaConsumerFactory<>(props);
     }
+
+   
 
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Application>
@@ -55,3 +59,4 @@ public class KafkaConsumerConfig {
 
 
 }
+
