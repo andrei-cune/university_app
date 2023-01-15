@@ -14,6 +14,7 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,12 +23,12 @@ import java.util.Map;
 @Configuration
 @Slf4j
 public class KafkaConsumerConfig {
-    private static final String bootstrapAddress = "127.0.0.1:29092";
+    private static final String bootstrapAddress = "kafka1:9092";
 
 
 
     @Bean
-    public ConsumerFactory<String, Application> consumerFactory() {
+    public ConsumerFactory<String, Object> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(
                 ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -45,13 +46,13 @@ public class KafkaConsumerConfig {
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
-   
+
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Application>
+    public ConcurrentKafkaListenerContainerFactory<String, Object>
     kafkaListenerContainerFactory() {
 
-        ConcurrentKafkaListenerContainerFactory<String, Application> factory =
+        ConcurrentKafkaListenerContainerFactory<String, Object> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
@@ -59,4 +60,3 @@ public class KafkaConsumerConfig {
 
 
 }
-
