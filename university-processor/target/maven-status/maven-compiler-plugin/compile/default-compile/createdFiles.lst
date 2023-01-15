@@ -1,0 +1,13 @@
+com\cc\cinemaprocessor\repository\UniversityRepository.class
+com\cc\cinemaprocessor\model\Course.class
+com\cc\cinemaprocessor\configuration\KafkaConsumerConfig.class
+com\cc\cinemaprocessor\UniversityProcessorApplication.class
+com\cc\cinemaprocessor\configuration\RabbitCinemaListener.class
+com\cc\cinemaprocessor\service\SchedulingService.class
+com\cc\cinemaprocessor\model\CreateFilmRequest.class
+com\cc\cinemaprocessor\repository\ApplicationRepository.class
+com\cc\cinemaprocessor\configuration\KafkaListenerService.class
+com\cc\cinemaprocessor\model\University.class
+com\cc\cinemaprocessor\service\UniversityService.class
+com\cc\cinemaprocessor\model\Application.class
+com\cc\cinemaprocessor\repository\CourseRepository.class

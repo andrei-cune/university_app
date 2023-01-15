@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  kafka:
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.idp.cinema.model
+
+  datasource:
+    url: jdbc:mysql://mysql_university:3306/university_db?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
