@@ -24,9 +24,9 @@ public class KafkaListenerService {
 //    }
 
    @KafkaListener(topics = "students", containerFactory = "kafkaListenerContainerFactory")
-    public void applicationListener(Application application, Acknowledgment ack) {
+    public void applicationListener(Object application, Acknowledgment ack) {
        log.info(String.format("Received student application from topic \"students\": [%s]", application));
-        universityService.saveApplication(application);
+        universityService.saveApplication((Application) application);
         ack.acknowledge();
     }
 }
